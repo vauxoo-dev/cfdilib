@@ -12,7 +12,7 @@ class Config(object):
     def __init__(self):
         self.verbose = False
 
-pass_config = click.make_pass_decorator(Config, ensure=True)
+PASS_CONFIG = click.make_pass_decorator(Config, ensure=True)
 
 
 @click.group()
@@ -22,7 +22,7 @@ pass_config = click.make_pass_decorator(Config, ensure=True)
               default='document.xml')
 @click.option('--in_file', type=click.File('rb'),
               default="document.json")
-@pass_config
+@PASS_CONFIG
 def cli(config, in_file, out_file, verbose):
     """Main Interface to generate xml documents
     from custom dictionaries using legal xsd files
@@ -36,7 +36,7 @@ def cli(config, in_file, out_file, verbose):
 
 
 @cli.command()
-@pass_config
+@PASS_CONFIG
 def cfdv32mx(config):
     """Format cfdi v3.2 for Mexico.
 
