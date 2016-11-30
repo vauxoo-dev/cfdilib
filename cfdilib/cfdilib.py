@@ -19,17 +19,16 @@ class Struct(object):
         @param :adict Dictionary
         """
         self.__dict__.update(adict)
-        for k, v in adict.items():
-            if self.__dict__[k] is False or self.__dict__[k] is None:  # pragma: no cover  # noqa
+        for key, value in adict.items():
+            if self.__dict__[key] is False or self.__dict__[key] is None:  # pragma: no cover  # noqa
                 # I did not find a use case hereto test it but it is necessary
                 # to left there when other recursive structure comes in
                 # that's why the no cover, remove this comment if you find one.
-                self.__dict__[k] = u'NA'
-            if isinstance(v, dict):
-                self.__dict__[k] = Struct(v)
-            if isinstance(v, list):
-                # import pdb; pdb.set_trace()
-                self.__dict__[k] = [Struct(x) for x in v]
+                self.__dict__[key] = u'NA'
+            if isinstance(value, dict):
+                self.__dict__[key] = Struct(value)
+            if isinstance(value, list):
+                self.__dict__[key] = [Struct(x) for x in value]
 
 
 
