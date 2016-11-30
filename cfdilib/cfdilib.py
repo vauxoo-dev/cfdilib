@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 import os
-from os.path import dirname
-from cStringIO import StringIO
 from abc import ABCMeta, abstractmethod
+from cStringIO import StringIO
+from os.path import dirname
 from tempfile import NamedTemporaryFile
 
-from lxml import etree
 from jinja2 import Environment, FileSystemLoader
 from jinja2.exceptions import UndefinedError
+from lxml import etree
 
 from .tools import tools
 

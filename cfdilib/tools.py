@@ -1,20 +1,20 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
+
 import logging
-import boto3
 import re
 import time
 import urllib2
-
 from contextlib import closing
+from functools import wraps
+from os.path import isfile
+from tempfile import NamedTemporaryFile
+from urlparse import urlparse
 
+import boto3
 from boto3.s3.transfer import S3Transfer
 from botocore.client import ClientError
-from tempfile import NamedTemporaryFile
 from lxml import etree
-from os.path import isfile
-from functools import wraps
-from urlparse import urlparse
 
 try:
     from functools import lru_cache

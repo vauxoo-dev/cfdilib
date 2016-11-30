@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-from suds.client import Client
+
 from urllib2 import URLError
+
+from suds.client import Client
 
 
 class Signatory(object):
