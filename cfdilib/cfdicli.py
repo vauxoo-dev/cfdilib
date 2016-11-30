@@ -2,6 +2,8 @@
 '''Command line interface for cfdilib
 '''
 
+import json
+
 import click
 
 from . import cfdv32
@@ -48,10 +50,7 @@ def cfdv32mx(config):
     File where the files will be written from document.json.
         cfdicli --out_file ./document.xml cfdv32mx
     """
-    # TODO: look for a secure option for eval.
-    #       Or simply the CLI only should manage json?
-    # TODO: Implement json option also.
-    dict_input = eval(config.in_file.read())
+    dict_input = dict(json.load(config.in_file))
     invoice = cfdv32.get_invoice(dict_input)
     if invoice.valid:
         config.out_file.write(invoice.document)
